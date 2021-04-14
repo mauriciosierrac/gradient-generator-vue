@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Generador de degradados en tiempo real">
+
+<!--metadata para PWA
+name= theme-color, pinta la barra de estado de un color en la parte superior (android)-->
+<meta name="theme-color" content="#f5f5dc" />
+<!--metadata para PWA
+name= apple-mobile-app-capable, permite modificar barra de estado en la parte superior (IOS)-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+/>
+
+<!-- optimizaciones de SEO, para que los robots de google sepan q son optimas para pwa-->
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+
+    <title>Gradient Gen</title>
+<!-- iconos -->
+    <!-- el favicon debe ser extension .icon pero con type= image/png acepta png -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./img/favicon.png" />
+    <link rel="apple-touch-startup-image" href="./img/favicon.png" />
+
+    <!-- manifiesto json-->
+    <link rel="manifest" href="./manifest.json" />
+
+
+    <link rel="stylesheet" href="./css/style.css" />
+
+    <script src="https://unpkg.com/vue@next"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{title}}</h1>
+      <hr />
+
+      <form>
+        <label
+          >Color 1:
+          <input type="color" v-model="fcolor" />
+        </label>
+        <label
+          >Color 2:
+          <input type="color" v-model="scolor" />
+        </label>
+      </form>
+      <p>HEX 1:{{fcolor}}</p>
+      <p>HEX 2:{{scolor}}</p>
+      <hr />
+      <form>
+        <label>
+          <input class="value-css" type="text" :value="setColor" />
+        </label>
+        <br />
+        <label>
+          <input type="radio" value="1" v-model.number="orientation" />Right
+        </label>
+        <label>
+          <input type="radio" value="2" v-model.number="orientation" />Left
+        </label>
+        <label>
+          <input type="radio" value="3" v-model.number="orientation" />Top
+        </label>
+        <label>
+          <input type="radio" value="4" v-model.number="orientation" />Bottom
+        </label>
+      </form>
+
+      <br /><br />
+      <div class="area" :style="setColor"></div>
+    </div>
+
+    <!-- etiquetas para cargar mi javascript-->
+    <script src="./load.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/mountApp.js"></script>
+    <div>Iconos diseñados por <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es</a></div>
+  </body>
+</html>
